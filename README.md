@@ -21,5 +21,3 @@ If you're running coverage at home and want to upload results to Codecov, make a
 #!/bin/bash
 REPO_TOKEN=$YOUR_TOKEN_HERE julia -e 'cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codedov.process_folder())'
 ```
-
-If you make it through that, consider adding your package to the list below.
