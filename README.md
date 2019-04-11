@@ -10,16 +10,23 @@
 2. You must be using `Julia 0.3` or higher, which added the `--code-coverage` command line argument.
 3. Use the command line option when you run your tests
   * Either with something like `julia --code-coverage test/runtests.jl`, or
-  * with something like  `julia -e 'Pkg.test("MyPkg", coverage=true)'`
-4. Add the following to the end of your `.travis.yml` file. This line downloads this package, collects the per-file coverage data, then bundles it up and submits to Codecov. Coverage.jl assumes that the working directory is the package directory, so it changes to that first (so don't forget to replace `MyPkg` with your package's name!
+  * with something like  `julia -e 'using Pkg; Pkg.test("MyPkg", coverage=true)'`
+4. Add the following to the end of your `.travis.yml` file. This line downloads this package, collects the per-file coverage data, then bundles it up and submits to Codecov. Coverage.jl assumes that the working directory is the package directory, so it changes to that first (so don't forget to replace `MyPkg` with your package's name)!
+  * `Julia 0.3` to `0.9`:
 ```yml
 after_success:
 - julia -e 'cd(Pkg.dir("MyPkg")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
 ```
+  * `Julia 1.0` or higher:
+ ```yml
+after_success:
+- julia -e 'using Pkg; cd(Pkg.dir("MyPkg")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+```
+
 If you're running coverage at home and want to upload results to Codecov, make a bash script like the following:
 ```bash
 #!/bin/bash
-REPO_TOKEN=$YOUR_TOKEN_HERE julia -e 'cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
+REPO_TOKEN=$YOUR_TOKEN_HERE julia -e 'using Pkg; cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
 ```
 
 We are happy to help if you have any questions. Please contact email our Support at [support@codecov.io](mailto:support@codecov.io)
