@@ -1,0 +1,5 @@
+name = "calculator"
+uuid = "669fd357-d32d-4252-9e0a-c6a4c750a700"
+authors = ["Tom Hu <tom@codecov.io>"]
+version = "0.1.0"
+
