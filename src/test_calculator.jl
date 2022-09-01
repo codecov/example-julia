@@ -33,6 +33,6 @@ using calculator
     @test divide(1.0, 2.0) == 0.5
     @test divide(0, 2.0) == 0
     @test divide(-4, 2.0) == -2.0
-    # @test divide(2.0, 0.0) == 'Cannot divide by 0'
+    # @test divide(2.0, 0.0) == "Cannot divide by 0"
   end
 end
