@@ -10,11 +10,6 @@ jobs:
         uses: julia-actions/setup-julia@v1
         with:
           version: "1.8.0"
-      - name: Install dependencies
-        run: |
-          julia --project=test -e '
-            using Pkg
-            Pkg.add("Coverage")'
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
