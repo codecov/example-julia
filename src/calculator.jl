@@ -1,6 +1,6 @@
 module calculator
 
-  export add, subtract, mulitply, divide
+  export add, subtract, multiply, divide
   add(x, y) = x + y
   subtract(x, y) = x - y
   multiply(x, y) = x * y
