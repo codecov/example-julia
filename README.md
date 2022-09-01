@@ -1,32 +1,18 @@
-> Extract from https://github.com/IainNZ/Coverage.jl
+# [Codecov](https://codecov.io) Julia Example
+[![codecov](https://codecov.io/github/codecov/example-julia/branch/main/graph/badge.svg)](https://app.codecov.io/github/codecov/example-julia)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-julia.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-julia?ref=badge_shield)
 
-## Using Codecov
+This example repository shows how Codecov can be integrated with a simple julia project. It uses **GitHub Actions** as the CI/CD provider and **Coverage** as the coverage provider.
 
-[Codecov.io](https://codecov.io) is another test-coverage tracking tool that integrates with your continuous integration servers (e.g. [TravisCI](https://travis-ci.org/)) or with HTTP POSTs from your very own computer at home.
+For more information, please see the links below.
 
-## Using Coverage.jl with Codecov.io?
+## Links
+- [Quick Start](https://docs.codecov.com/docs/quick-start)
+- [GitHub Tutorial](https://docs.codecov.com/docs/github-tutorial)
+- [Community Boards](https://community.codecov.io)
+- [Support](https://codecov.io/support)
+- [Documentation](https://docs.codecov.io)
 
-1. Enable [Codecov.io](https://codecov.io) for your repository. If it is public on GitHub and you are using using TravisCI, this is all you need to do. You can sign into Codecov using your Github identity. You will be served a `REPO_TOKEN`. You'll need this if you're not using a CI solution.
-2. You must be using `Julia 0.3` or higher, which added the `--code-coverage` command line argument.
-3. Use the command line option when you run your tests
-  * Either with something like `julia --code-coverage test/runtests.jl`, or
-  * with something like  `julia -e 'using Pkg; Pkg.test("MyPkg", coverage=true)'`
-4. Add the following to the end of your `.travis.yml` file. This line downloads this package, collects the per-file coverage data, then bundles it up and submits to Codecov. Coverage.jl assumes that the working directory is the package directory, so it changes to that first (so don't forget to replace `MyPkg` with your package's name)!
-  * `Julia 0.3` to `0.9`:
-```yml
-after_success:
-- julia -e 'cd(Pkg.dir("MyPkg")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-```
-  * `Julia 1.0` or higher:
- ```yml
-after_success:
-- julia -e 'using Pkg; cd(Pkg.dir("MyPkg")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-```
 
-If you're running coverage at home and want to upload results to Codecov, make a bash script like the following:
-```bash
-#!/bin/bash
-REPO_TOKEN=$YOUR_TOKEN_HERE julia -e 'using Pkg; cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
-```
-
-We are happy to help if you have any questions. Please contact email our Support at [support@codecov.io](mailto:support@codecov.io)
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-julia.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-julia?ref=badge_large)
